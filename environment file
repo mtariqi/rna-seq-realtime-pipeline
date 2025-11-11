@@ -1,0 +1,13 @@
+name: rna_realtime_env
+channels:
+  - bioconda
+  - conda-forge
+dependencies:
+  - python=3.10
+  - minimap2
+  - samtools
+  - subread
+  - inotify-tools
+  - pandas
+  - nextflow
+  - jaffal
