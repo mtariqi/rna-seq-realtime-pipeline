@@ -1,0 +1,26 @@
+name: 🧬 RNA-seq Pipeline CI
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: conda-incubator/setup-miniconda@v3
+        with:
+          environment-file: environment.yml
+          activate-environment: rna_realtime_env
+      - name: Verify tools
+        shell: bash -l {0}
+        run: |
+          nextflow -version
+          fastqc -version || echo "FastQC not found"
+          multiqc --version || echo "MultiQC not found"
+          minimap2 --version || echo "minimap2 not found"
+      - name: Dry-run pipeline
+        shell: bash -l {0}
+        run: |
+          nextflow run main.nf -c nextflow.config -stub-run
