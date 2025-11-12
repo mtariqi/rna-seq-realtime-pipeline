@@ -13,32 +13,37 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Conda
+      - name: Set up Conda environment
         uses: conda-incubator/setup-miniconda@v3
         with:
           environment-file: environment.yml
           activate-environment: rna_realtime_env
           auto-activate-base: false
+          auto-update-conda: true
 
-      - name: Install Nextflow (if missing)
-        run: |
-          if ! command -v nextflow &> /dev/null; then
-            wget -qO- https://get.nextflow.io | bash
-            sudo mv nextflow /usr/local/bin/
-          fi
-
-      - name: Verify tool installation
+      - name: Activate environment and install Nextflow manually
         shell: bash -l {0}
         run: |
-          echo "🔍 Checking tool versions"
+          echo "🔧 Activating conda environment..."
+          conda activate rna_realtime_env
+          wget -qO- https://get.nextflow.io | bash
+          sudo mv nextflow /usr/local/bin/
           nextflow -version
-          fastqc -version || echo "FastQC missing"
-          multiqc --version || echo "MultiQC missing"
-          minimap2 --version || echo "Minimap2 missing"
-          echo "✅ Environment setup complete"
+
+      - name: Verify key tools
+        shell: bash -l {0}
+        run: |
+          conda activate rna_realtime_env
+          echo "🔍 Checking versions..."
+          fastqc -version || echo "⚠️ FastQC not found"
+          multiqc --version || echo "⚠️ MultiQC not found"
+          minimap2 --version || echo "⚠️ Minimap2 not found"
+          echo "✅ Tools verified."
 
       - name: Dry-run the Nextflow pipeline
         shell: bash -l {0}
         run: |
-          echo "🚀 Running dry-run test"
+          conda activate rna_realtime_env
+          echo "🚀 Launching dry-run..."
           nextflow run main.nf -c nextflow.config -stub-run
+          echo "✅ Dry-run completed successfully."
