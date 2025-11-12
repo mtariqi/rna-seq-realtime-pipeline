@@ -1,3 +1,6 @@
+[![RNA-seq Pipeline CI](https://github.com/mtariqi/rna-seq-realtime-pipeline/actions/workflows/test.yml/badge.svg)](https://github.com/mtariqi/rna-seq-realtime-pipeline/actions/workflows/test.yml)
+
+
 # ⚡ Real-time RNA-seq Pipeline
 
 **Author:** MD Tariqul Islam (Tariq)  
