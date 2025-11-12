@@ -1,4 +1,8 @@
 [![RNA-seq Pipeline CI](https://github.com/mtariqi/rna-seq-realtime-pipeline/actions/workflows/test.yml/badge.svg)](https://github.com/mtariqi/rna-seq-realtime-pipeline/actions/workflows/test.yml)
+![Conda](https://img.shields.io/badge/Conda-ready-blue)
+![Nextflow](https://img.shields.io/badge/Nextflow-DSL2-success)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+
 
 
 # ⚡ Real-time RNA-seq Pipeline
