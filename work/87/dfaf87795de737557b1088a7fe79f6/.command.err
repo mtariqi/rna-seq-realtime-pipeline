@@ -1,0 +1,12 @@
+Failed to process sample1.fastq.gz
+java.util.zip.ZipException: Not in GZIP format
+	at java.base/java.util.zip.GZIPInputStream.readHeader(GZIPInputStream.java:199)
+	at java.base/java.util.zip.GZIPInputStream.<init>(GZIPInputStream.java:82)
+	at java.base/java.util.zip.GZIPInputStream.<init>(GZIPInputStream.java:114)
+	at uk.ac.babraham.FastQC.Utilities.MultiMemberGZIPInputStream.<init>(MultiMemberGZIPInputStream.java:37)
+	at uk.ac.babraham.FastQC.Sequence.FastQFile.<init>(FastQFile.java:84)
+	at uk.ac.babraham.FastQC.Sequence.SequenceFactory.getSequenceFile(SequenceFactory.java:106)
+	at uk.ac.babraham.FastQC.Sequence.SequenceFactory.getSequenceFile(SequenceFactory.java:62)
+	at uk.ac.babraham.FastQC.Analysis.OfflineRunner.processFile(OfflineRunner.java:163)
+	at uk.ac.babraham.FastQC.Analysis.OfflineRunner.<init>(OfflineRunner.java:125)
+	at uk.ac.babraham.FastQC.FastQCApplication.main(FastQCApplication.java:316)

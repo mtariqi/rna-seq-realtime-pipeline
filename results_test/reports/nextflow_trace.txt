@@ -1,0 +1,7 @@
+task_id	hash	native_id	name	status	exit	submit	duration	realtime	%cpu	peak_rss	peak_vmem	rchar	wchar
+5	87/dfaf87	65856	FASTQC (sample1)	FAILED	1	2025-11-11 23:29:13.466	367ms	343ms	-	-	-	-	-
+1	95/0c33eb	65839	ALIGN_READS (sample2)	COMPLETED	0	2025-11-11 23:29:13.450	393ms	313ms	92.3%	32.7 MB	108.6 MB	6.4 MB	4 MB
+6	05/a74c9f	65878	ALIGN_READS (sample1)	COMPLETED	0	2025-11-11 23:29:13.480	364ms	313ms	96.5%	39.4 MB	108.6 MB	6.4 MB	4 MB
+2	dd/1aeca7	66213	FASTQC (sample2)	ABORTED	-	2025-11-11 23:29:13.845	-	-	-	-	-	-	-
+3	35/2698ac	66218	FASTQC (test)	ABORTED	-	2025-11-11 23:29:13.856	-	-	-	-	-	-	-
+4	12/e96248	66238	ALIGN_READS (test)	ABORTED	-	2025-11-11 23:29:13.867	-	-	-	-	-	-	-

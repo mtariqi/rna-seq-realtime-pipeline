@@ -1,0 +1,80 @@
+Settings:
+  Output files: "genome.fa.*.ht2"
+  Line rate: 6 (line is 64 bytes)
+  Lines per side: 1 (side is 64 bytes)
+  Offset rate: 4 (one in 16)
+  FTable chars: 10
+  Strings: unpacked
+  Local offset rate: 3 (one in 8)
+  Local fTable chars: 6
+  Local sequence length: 57344
+  Local sequence overlap between two consecutive indexes: 1024
+  Endianness: little
+  Actual local endianness: little
+  Sanity checking: disabled
+  Assertions: disabled
+  Random seed: 0
+  Sizeofs: void*:8, int:4, long:8, size_t:8
+Input files DNA, FASTA:
+  genome.fa
+Reading reference sizes
+  Time reading reference sizes: 00:00:00
+Calculating joined length
+Writing header
+Reserving space for joined string
+Joining reference sequences
+  Time to join reference sequences: 00:00:00
+  Time to read SNPs and splice sites: 00:00:00
+Using parameters --bmax 48 --dcv 1024
+  Doing ahead-of-time memory usage test
+  Passed!  Constructing with these parameters: --bmax 48 --dcv 1024
+Constructing suffix-array element generator
+Converting suffix-array elements to index image
+Allocating ftab, absorbFtab
+Entering GFM loop
+Exited GFM loop
+fchr[A]: 0
+fchr[C]: 32
+fchr[G]: 128
+fchr[T]: 160
+fchr[$]: 256
+Exiting GFM::buildToDisk()
+Returning from initFromVector
+Wrote 4194681 bytes to primary GFM file: genome.fa.1.ht2
+Wrote 72 bytes to secondary GFM file: genome.fa.2.ht2
+Re-opening _in1 and _in2 as input streams
+Returning from GFM constructor
+Returning from initFromVector
+Wrote 33341 bytes to primary GFM file: genome.fa.5.ht2
+Wrote 76 bytes to secondary GFM file: genome.fa.6.ht2
+Re-opening _in5 and _in5 as input streams
+Returning from HGFM constructor
+Headers:
+    len: 256
+    gbwtLen: 257
+    nodes: 257
+    sz: 64
+    gbwtSz: 65
+    lineRate: 6
+    offRate: 4
+    offMask: 0xfffffff0
+    ftabChars: 10
+    eftabLen: 0
+    eftabSz: 0
+    ftabLen: 1048577
+    ftabSz: 4194308
+    offsLen: 17
+    offsSz: 68
+    lineSz: 64
+    sideSz: 64
+    sideGbwtSz: 48
+    sideGbwtLen: 192
+    numSides: 2
+    numLines: 2
+    gbwtTotLen: 128
+    gbwtTotSz: 128
+    reverse: 0
+    linearFM: Yes
+Total time for call to driver() for forward index: 00:00:00
+0 reads
+0.00% overall alignment rate

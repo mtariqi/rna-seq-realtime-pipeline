@@ -2,22 +2,17 @@ name: ⚡ RNA-seq Pipeline CI
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ main ]
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
 
     steps:
-      # ---------------- Checkout Repository ----------------
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      # ---------------- Conda Environment ----------------
-      - name: Set up Miniconda
+      - uses: actions/checkout@v4
+      - name: Set up Conda environment
         uses: conda-incubator/setup-miniconda@v3
         with:
           environment-file: environment.yml
@@ -30,5 +25,6 @@ jobs:
         run: |
           echo "⚙️  Activating conda environment..."
           conda activate rna_realtime_env
+          wget -qO- https://get.nextflow.io | bash
+          sudo mv nextflow /usr/local/bin/
           nextflow -version
-          echo "✅ Environment ready."

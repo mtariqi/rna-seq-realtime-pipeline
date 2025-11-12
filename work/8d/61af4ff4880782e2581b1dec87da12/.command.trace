@@ -1,0 +1,17 @@
+nextflow.trace/v2
+realtime=2209
+%cpu=1085
+cpu_model=Intel(R) Core(TM) i7-4770 CPU @ 3.40GHz
+rchar=10736085
+wchar=3021568
+syscr=5542
+syscw=6921
+read_bytes=22593536
+write_bytes=3256320
+%mem=8
+vmem=4006484
+rss=142004
+peak_vmem=4016552
+peak_rss=142004
+vol_ctxt=2
+inv_ctxt=1

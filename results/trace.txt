@@ -1,0 +1,3 @@
+task_id	hash	native_id	name	status	exit	submit	duration	realtime	%cpu	peak_rss	peak_vmem	rchar	wchar
+1	8d/61af4f	72311	FASTQC (test.fastq)	COMPLETED	0	2025-11-12 00:02:23.650	2.2s	2.2s	108.5%	138.7 MB	3.8 GB	10.2 MB	2.9 MB
+2	18/6afb83	72542	MULTIQC (multiqc)	FAILED	0	2025-11-12 00:02:25.932	2s	2s	100.7%	124.6 MB	1.5 GB	27.7 MB	94.2 KB

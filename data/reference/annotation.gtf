@@ -1,0 +1,8 @@
+chr1	unknown	gene	1	50	.	+	.	gene_id "gene1";
+chr1	unknown	exon	1	50	.	+	.	gene_id "gene1"; transcript_id "transcript1";
+chr2	unknown	gene	1	50	.	+	.	gene_id "gene2";
+chr2	unknown	exon	1	50	.	+	.	gene_id "gene2"; transcript_id "transcript2";
+chr3	unknown	gene	1	50	.	+	.	gene_id "gene3";
+chr3	unknown	exon	1	50	.	+	.	gene_id "gene3"; transcript_id "transcript3";
+chr4	unknown	gene	1	50	.	+	.	gene_id "gene4";
+chr4	unknown	exon	1	50	.	+	.	gene_id "gene4"; transcript_id "transcript4";

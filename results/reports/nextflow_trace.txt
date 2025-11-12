@@ -1,0 +1,4 @@
+task_id	hash	native_id	name	status	exit	submit	duration	realtime	%cpu	peak_rss	peak_vmem	rchar	wchar
+3	36/cb9812	66760	FASTQC (sample1.fastq)	FAILED	1	2025-11-11 23:30:48.226	372ms	295ms	-	-	-	-	-
+1	81/64a9a7	66697	FASTQC (sample2.fastq)	FAILED	1	2025-11-11 23:30:48.178	407ms	385ms	-	-	-	-	-
+2	da/96f8ed	66727	FASTQC (test.fastq)	FAILED	1	2025-11-11 23:30:48.204	391ms	294ms	-	-	-	-	-

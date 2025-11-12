@@ -1,0 +1,10 @@
+
+/// MultiQC 🔍 v1.32
+
+       file_search | Search path: /home/mtariq/rna-seq-realtime-pipeline/work/4e/a390996946ec58a19c015da6dd0204
+
+            fastqc | Found 1 reports
+
+     write_results | Data        : multiqc_data
+     write_results | Report      : multiqc_report.html
+           multiqc | MultiQC complete

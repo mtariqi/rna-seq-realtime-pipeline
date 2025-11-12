@@ -1,0 +1,13 @@
+2025-11-11 18:52:55	-	thirsty_pauling	-	f9efb01b18f7f6015c10d480f67ef901	d2d29de9-90e1-430f-81fb-09ff0612216e	nextflow run main.nf -profile local
+2025-11-11 18:54:52	-	shrivelled_saha	-	f9efb01b18f7f6015c10d480f67ef901	8c347fc9-3481-4404-a18c-1e0fa82fecf5	nextflow run main.nf -profile local
+2025-11-11 23:18:00	3.6s	friendly_crick	ERR	b843ac6012d9323f363b303bf8dc7726	5108a260-5010-42d5-bd35-9d11224f970f	nextflow run main.nf -profile local --reads 'data/fastq/*.fastq.gz' --genome data/reference/genome.fa --annotation data/reference/annotation.gtf --outdir results_test
+2025-11-11 23:26:52	-	shrivelled_ptolemy	-	bb4d1cd9228b9ebefebcfdd8079e1dab	950aae39-d5bb-42d6-a976-f0ad2d7e2961	nextflow run main.nf -profile local --reads 'data/fastq/*.fastq.gz' --genome data/reference/genome.fa --annotation data/reference/annotation.gtf --outdir results_test
+2025-11-11 23:29:12	3.6s	furious_becquerel	ERR	85574e70cc113f16b46354f4a63e37f9	66a12b46-5107-4267-9fa4-73a318c12f08	nextflow run main.nf -profile local --reads 'data/fastq/*.fastq.gz' --genome data/reference/genome.fa --annotation data/reference/annotation.gtf --outdir results_test
+2025-11-11 23:30:47	2.6s	admiring_moriondo	ERR	9655d16d23a8ca2f355e23a0cb7155d9	11dfc34e-5560-44c0-aa68-a2936d5f6da0	nextflow run minimal_test.nf -profile local
+2025-11-11 23:45:47	4.4s	irreverent_ptolemy	ERR	85574e70cc113f16b46354f4a63e37f9	11dfc34e-5560-44c0-aa68-a2936d5f6da0	nextflow run main.nf -resume
+2025-11-11 23:46:14	4s	loving_northcutt	ERR	85574e70cc113f16b46354f4a63e37f9	11dfc34e-5560-44c0-aa68-a2936d5f6da0	nextflow run main.nf -resume
+2025-11-12 00:02:22	6.9s	fabulous_bell	ERR	c2fad65056153186e08821bf21ada436	11dfc34e-5560-44c0-aa68-a2936d5f6da0	nextflow run main.nf -c nextflow.config -resume
+2025-11-12 00:07:33	-	condescending_murdock	-	5c9f34c704da4436213619e1c25b0d40	11dfc34e-5560-44c0-aa68-a2936d5f6da0	nextflow run main.nf -c nextflow.config -resume
+2025-11-12 00:16:16	-	furious_magritte	-	9ee01c32b5a54e11f927914a2f1dda71	11dfc34e-5560-44c0-aa68-a2936d5f6da0	nextflow run main.nf -c nextflow.config -resume
+2025-11-12 00:21:40	6.5s	hungry_lamarr	OK	f245f0fdf9a22cef2adcc5f8d8998661	11dfc34e-5560-44c0-aa68-a2936d5f6da0	nextflow run main.nf -c nextflow.config -resume
+2025-11-12 00:28:21	2.9s	angry_turing	OK	f245f0fdf9a22cef2adcc5f8d8998661	11dfc34e-5560-44c0-aa68-a2936d5f6da0	nextflow run main.nf -c nextflow.config -resume

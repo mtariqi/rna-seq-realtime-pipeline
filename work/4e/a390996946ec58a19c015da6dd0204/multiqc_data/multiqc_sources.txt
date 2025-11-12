@@ -1,0 +1,2 @@
+Module	Section	Sample Name	Source
+FastQC	all_sections	test	/home/mtariq/rna-seq-realtime-pipeline/work/4e/a390996946ec58a19c015da6dd0204/test_fastqc.zip
