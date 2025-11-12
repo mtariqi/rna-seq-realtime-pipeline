@@ -1,123 +1,158 @@
 [![RNA-seq Pipeline CI](https://github.com/mtariqi/rna-seq-realtime-pipeline/actions/workflows/test.yml/badge.svg)](https://github.com/mtariqi/rna-seq-realtime-pipeline/actions/workflows/test.yml)
 ![Conda](https://img.shields.io/badge/Conda-ready-blue)
-![Nextflow](https://img.shields.io/badge/Nextflow-DSL2-success)
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Nextflow](https://img.shields.io/badge/Nextflow-DSL2-green)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+![Version](https://img.shields.io/badge/version-1.0-brightgreen)
 
 
 
 # ⚡ Real-time RNA-seq Pipeline
-
 **Author:** MD Tariqul Islam (Tariq)  
 **GitHub:** [@mtariqi](https://github.com/mtariqi)  
-**Version:** 1.0 • **License:** MIT • **Last Updated:** November 2025  
+**LinkedIn:** [www.linkedin.com/in/mdtariqulscired](https://www.linkedin.com/in/mdtariqulscired) 
+**License:** MIT • **Version:** 1.0 • **Last Updated:** November 2025  
 
 ---
 
 ## 📘 Overview
-This repository implements a **modular, streaming-aware workflow** for **real-time Nanopore RNA-seq analysis**.  
-It continuously monitors an input directory, basecalls new reads with **Dorado**, performs **on-the-fly alignment** using `minimap2`, and updates **gene-level counts** and **fusion detections** as data arrive.  
-The pipeline is written in **Nextflow DSL2** with optional Bash + Python watchers for low-latency updates.
+This repository implements a **modular, streaming-aware RNA-seq workflow** for *real-time Nanopore* or *Illumina* sequencing analysis.  
+The pipeline continuously monitors an input directory for new reads, performs **on-the-fly basecalling**, **alignment**, and **gene-level quantification**, and reports **fusion events** as data arrive.
 
-### 🔑 Key Features
-- 🧬 **Dorado basecalling** — GPU-optimized, accurate ONT basecaller  
-- 🧭 **Streaming alignment** — fast spliced alignment via `minimap2`  
-- 📊 **Incremental gene counting** — real-time quantification with `featureCounts`  
-- 🔍 **Fusion detection** — continuous structural transcript analysis using `JAFFAL`  
-- ⏱️ **Near real-time feedback** — process reads as soon as they are generated  
-- ☁️ **Portable** — run locally, on HPC (SLURM), or in the cloud (AWS Batch)
+It is designed to operate both in:
+- 🧑‍🔬 **Interactive mode** (local/academic HPC)  
+- ☁️ **Cloud/HPC environments** (AWS Batch, SLURM, Google Cloud)  
+
+Built entirely in **Nextflow DSL2** with Conda-based reproducibility, this pipeline supports **streaming bioinformatics** and **low-latency diagnostics** applications.
 
 ---
 
-## 🧩 Workflow Diagram
+## 🔑 Key Features
 
-```mermaid
-graph TD
-    A[Incoming FAST5/FASTQ (Nanopore run)] --> B[Dorado Basecalling]
-    B --> C[minimap2 Alignment]
-    C --> D[featureCounts Quantification]
-    C --> E[JAFFAL Fusion Detection]
-    D --> F[Real-time Expression Dashboard]
-    E --> F
+| Category | Description |
+|-----------|--------------|
+| 🧬 **Dorado Basecalling** | GPU-optimized Oxford Nanopore basecaller |
+| 🧭 **Streaming Alignment** | On-the-fly spliced alignment using [`minimap2`](https://github.com/lh3/minimap2) |
+| 📊 **Incremental Quantification** | Gene-level counting via [`featureCounts`](https://subread.sourceforge.net) |
+| 🔍 **Fusion Detection** | Continuous fusion transcript detection using [`JAFFAL`](https://github.com/Oshlack/JAFFAL) |
+| 🧠 **Automation** | Real-time file watcher triggers the pipeline automatically as FASTQ files appear |
+| ⚙️ **Nextflow DSL2 Modularity** | Scalable, maintainable processes and channels |
+| 🧪 **CI Integration** | Automated GitHub Actions test with environment validation and dry-run simulation |
+| 🔐 **Reproducibility** | Environment-locked `environment.yml` for fully deterministic runs |
 
-## ⚙️ Installation & Setup
-1️⃣ Create the Environment
+---
+
+## 🧩 Project Structure
+```
+rna-seq-realtime-pipeline/
+├── .github/workflows/ # CI automation (Nextflow validation + dry-run)
+├── data/ # Example FASTQ input data
+├── results/ # Pipeline output
+├── scripts/ # Helper scripts & utilities
+├── watcher/ # File watcher for real-time streaming mode
+├── nextflow.config # Runtime configuration
+├── main.nf # Core Nextflow workflow (DSL2)
+├── environment.yml # Conda environment definition
+└── README.md # Project documentation
+```
+---
+
+## ⚙️ Installation
+
+### 1️⃣ Clone the repository
+```bash
+git clone https://github.com/mtariqi/rna-seq-realtime-pipeline.git
+cd rna-seq-realtime-pipeline
+
+### 2️⃣ Create Conda environment
 conda env create -f environment.yml
 conda activate rna_realtime_env
-2️⃣ Prepare Input
-Place your live Nanopore output (FAST5 or FASTQ) under:
-data/live/
-3️⃣ Launch Real-time Processing
+
+### 3️⃣ Run a quick test (dry-run)
+
+nextflow run main.nf -stub-run
+
+### 4️⃣ Enable real-time watcher
 bash watcher/watch_and_process.sh
 
-🧠 Configuration
-```
-| Parameter        | Description              | Default         |
-| ---------------- | ------------------------ | --------------- |
-| `params.in_dir`  | Input directory to watch | `data/live`     |
-| `params.out_dir` | Output directory         | `results`       |
-| `params.genome`  | Reference genome FASTA   | `ref/genome.fa` |
-| `params.gtf`     | Annotation file          | `ref/genes.gtf` |
-| `params.device`  | GPU ID for Dorado        | `cuda:0`        |
-```
-## 📊 Output Overview
-```
-| Folder                 | Contents                                 |
-| ---------------------- | ---------------------------------------- |
-| `results/basecalling/` | FASTQ files and Dorado logs              |
-| `results/alignment/`   | BAM + index files from minimap2          |
-| `results/counts/`      | Incremental count tables (featureCounts) |
-| `results/fusions/`     | JAFFAL fusion calls (JSON / TSV)         |
-| `results/reports/`     | MultiQC summaries and runtime stats      |
-```
-## 🧬 Core Tools & Citations
-```
-| Tool              | Purpose                             | Reference                                                                                                                                                                                                                                                               |
-| ----------------- | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Dorado (ONT)**  | GPU basecaller for Nanopore signals | Oxford Nanopore Technologies (2024). *Dorado basecaller*. [GitHub: nanoporetech/dorado](https://github.com/nanoporetech/dorado)                                                                                                                                         |
-| **minimap2**      | Fast alignment of long reads        | Li H. (2018). *Minimap2: pairwise alignment for nucleotide sequences.* **Bioinformatics 34(18)**: 3094–3100. [https://doi.org/10.1093/bioinformatics/bty191](https://doi.org/10.1093/bioinformatics/bty191)                                                             |
-| **featureCounts** | Read quantification                 | Liao Y., Smyth G.K., Shi W. (2014). *featureCounts: an efficient general purpose program for assigning sequence reads to genomic features.* **Bioinformatics 30(7)**: 923–930.                                                                                          |
-| **JAFFAL**        | Fusion detection from long reads    | Davidson N.M., Schroder J., Robinson M.D. (2022). *JAFFAL: detecting fusion genes from long-read transcriptome sequencing data.* **Bioinformatics 38(12)**: 3312–3318. [https://doi.org/10.1093/bioinformatics/btac321](https://doi.org/10.1093/bioinformatics/btac321) |
-```
 
-## 🖥️ HPC & Cloud Support
-```
-process {
-  executor = 'slurm'
-  cpus     = 8
-  memory   = '32 GB'
-  time     = '4h'
-  clusterOptions = '--account=your_lab_account'
-}
-```
-Then execute:
-nextflow run main.nf -c nextflow_slurm.config
-## 🧪 Reproducibility
+This continuously monitors your FASTQ directory and launches analysis as new data arrive.
 
-Deterministic outputs via Nextflow DSL2 caching
+🧪 Continuous Integration (CI)
 
-Environment captured in environment.yml
+The repository includes an automated workflow using GitHub Actions to:
 
-Configurable resources per process (CPUs, RAM, GPU)
+Build and validate the rna_realtime_env Conda environment
 
-Re-run using:
+Install and verify Nextflow, FastQC, MultiQC, and Minimap2
 
-nextflow run main.nf -resume
+Perform a Nextflow dry-run simulation (-stub-run)
 
-📜 Citation
+Upload diagnostic logs as CI artifacts
 
-If you use or adapt this repository, please cite:
+You can view the live CI status under the Actions tab
+or by following this badge:
+👉
 
-Islam, M.T. (2025). Real-time RNA-seq Pipeline for Nanopore Data Processing and Incremental Analysis using Nextflow DSL2. GitHub: https://github.com/mtariqi/rna-seq-realtime-pipeline
+📈 Example Output
+Module	Output	Description
+FastQC	results/fastqc/	Quality metrics per read
+Minimap2	results/alignment/	Spliced alignments (BAM/SAM)
+FeatureCounts	results/counts.txt	Gene-level counts
+JAFFAL	results/fusions/	Fusion gene candidates
+MultiQC	results/multiqc_report.html	Aggregated QC report
+🧮 Reproducibility
 
-🧩 Contact
+Workflow Language: Nextflow DSL2
 
-📧 tariqul@scired.com
+Environment Manager: Conda
 
-🔗 LinkedIn
- | GitHub
+Container Support: Docker / Singularity (optional)
 
-“Turning live Nanopore signals into biological insight — in real time.”
+Validation: Continuous Integration via GitHub Actions
 
+For full reproducibility, freeze all package versions before deployment:
+
+conda env export > environment.lock.yml
+
+🧠 Citation & References
+
+If you use or adapt this pipeline, please cite:
+
+Li H. (2018). Minimap2: pairwise alignment for nucleotide sequences. Bioinformatics, 34(18): 3094–3100.
+
+Davidson N. et al. (2022). JAFFAL: Fusion gene detection from long-read transcriptome data. Bioinformatics, 38(6): 1577–1583.
+
+Oxford Nanopore Technologies (2024). Dorado Basecaller.
+
+Subread Team (2014). featureCounts: efficient read summarization program.
+
+🤝 Contributing
+
+Contributions and pull requests are welcome!
+Please fork the repo, create a feature branch, and submit a pull request.
+
+git checkout -b feature/new-module
+git commit -m "Add new module"
+git push origin feature/new-module
+
+
+📧 Contact
+
+For technical inquiries or collaborations:
+📩 tariqul@scired.com
+
+🌐 LinkedIn: www.linkedin.com/in/mdtariqulscired
+
+💻 GitHub: https://github.com/mtariqi
+📧 Contact
+
+🧾 License
+
+This project is released under the MIT License
+.
+
+“Real-time RNA-seq analysis is not just computation — it’s precision medicine in motion.”
+— MD Tariqul Islam (Tariq)
 
 
 
