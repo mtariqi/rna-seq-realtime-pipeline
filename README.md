@@ -19,7 +19,7 @@
   </a>
 </p>
 
----
+-----------------------------------------------------------------------------------------------------------------------------------------------------
 
 # ⚡ **Real-time RNA-seq Pipeline**
 A modular **Nextflow DSL2** workflow for *streaming-aware* RNA-seq processing using **Dorado, Minimap2, FeatureCounts, and JAFFAL fusion detection**.
