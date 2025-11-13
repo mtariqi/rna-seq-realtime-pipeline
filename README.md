@@ -4,7 +4,7 @@
 flowchart TB
 
     subgraph INPUT[📥 Sequencing Input Layer]
-        A1[FASTQ (Nanopore/Illumina)]
+        A1["FASTQ (Nanopore/Illumina)"]
         A2[Live Streaming Data]
     end
 
