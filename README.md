@@ -1,3 +1,24 @@
+```mermaid
+flowchart LR
+    A[📥 Sequencer Output<br>FASTQ] --> B[👀 Watcher Script]
+    B -->|New files| C[⚡ Launch Nextflow]
+
+    subgraph Pipeline[Nextflow DSL2 Pipeline]
+        D1[🧬 Dorado Basecalling]
+        D2[🛰 Minimap2 Alignment]
+        D3[🔢 FeatureCounts]
+        D4[🔥 JAFFAL Fusion Detection]
+    end
+
+    C --> D1
+    C --> D2
+    C --> D3
+    C --> D4
+
+    D3 --> E[(📊 Gene Counts)]
+    D4 --> F[(🧪 Fusion Events)]
+```
+
 <!-- ========================== -->
 <!--        BADGES HEADER       -->
 <!-- ========================== -->
