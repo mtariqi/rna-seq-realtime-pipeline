@@ -105,6 +105,7 @@ If you use this pipeline in your research, please cite:
 
 ## 🧩 Project Structure
 ```
+```
 rna-seq-realtime-pipeline/
 ├── .github/workflows/ # CI automation (Nextflow validation + dry-run)
 ├── data/ # Example FASTQ input data
