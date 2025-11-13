@@ -120,7 +120,8 @@ conda env export > environment.lock.yml
 
 🧠 Citation & References
 
-If you use or adapt this pipeline, please cite:
+Islam, M. T. (2025). *Real-time RNA-seq Pipeline (v1.0.0)* [Software]. Zenodo.  
+https://doi.org/10.5281/zenodo.17603512
 
 Li H. (2018). Minimap2: pairwise alignment for nucleotide sequences. Bioinformatics, 34(18): 3094–3100.
 
