@@ -1,5 +1,6 @@
-mermaid
-```
+# ⚡ Real-time RNA-seq Pipeline
+
+```mermaid
 flowchart TB
 
     subgraph INPUT[📥 Sequencing Input Layer]
@@ -53,10 +54,6 @@ flowchart TB
     ORCH -. runs on .-> CLOUD
 ```
 
-<!-- ========================== -->
-<!--        BADGES HEADER       -->
-<!-- ========================== -->
-
 <p align="center">
   <a href="https://github.com/mtariqi/rna-seq-realtime-pipeline/actions/workflows/test.yml">
     <img src="https://github.com/mtariqi/rna-seq-realtime-pipeline/actions/workflows/test.yml/badge.svg" alt="RNA-seq Pipeline CI" />
@@ -70,24 +67,23 @@ flowchart TB
   </a>
 </p>
 
------------------------------------------------------------------------------------------------------------------------------------------------------
-
-# ⚡ **Real-time RNA-seq Pipeline**
-A modular **Nextflow DSL2** workflow for *streaming-aware* RNA-seq processing using **Dorado, Minimap2, FeatureCounts, and JAFFAL fusion detection**.
-
 ---
 
-## 👤 **Author**
+A modular **Nextflow DSL2** workflow for *streaming-aware* RNA-seq processing using **Dorado, Minimap2, FeatureCounts, and JAFFAL fusion detection**.
+
+## 👤 Author
+
 **MD Tariqul Islam (Tariq)**  
 **GitHub:** [@mtariqi](https://github.com/mtariqi)  
 **LinkedIn:** https://www.linkedin.com/in/mdtariqulscired  
 **License:** MIT  
-**Version:** 1.0  
+**Version:** 1.0.0  
 **Last Updated:** November 2025  
 
 ---
 
-# 🔍 **Overview**
+## 🔍 Overview
+
 This project provides a **real-time, event-driven RNA-seq pipeline** for cloud & HPC environments.  
 It automatically watches a directory for new FASTQ files and triggers downstream RNA-seq processing:
 
@@ -98,27 +94,6 @@ It automatically watches a directory for new FASTQ files and triggers downstream
 - 🧪 **Streaming mode** – continuous monitoring for new sequencing data  
 
 Ideal for **Nanopore live basecalling**, **Illumina streaming**, **clinical diagnostics**, and **real-time genomics**.
-
----
-
-# 📚 **Citation**
-If you use this pipeline in your research, please cite:
-
-### **APA Format**
-> Islam, M. T. (2025). *Real-time RNA-seq Pipeline (v1.0.0)* [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.17603512
-
-### **BibTeX**
-```bibtex
-@software{islam_2025_rnaseq,
-  author       = {Islam, MD Tariqul},
-  title        = {Real-time RNA-seq Pipeline},
-  version      = {1.0.0},
-  year         = {2025},
-  month        = {11},
-  publisher    = {Zenodo},
-  doi          = {10.5281/zenodo.17603512},
-  url          = {https://doi.org/10.5281/zenodo.17603512}
-}
 
 ---
 
@@ -138,152 +113,156 @@ If you use this pipeline in your research, please cite:
 ---
 
 ## 🧩 Project Structure
-```
+
 ```
 rna-seq-realtime-pipeline/
-├── .github/workflows/ # CI automation (Nextflow validation + dry-run)
-├── data/ # Example FASTQ input data
-├── results/ # Pipeline output
-├── scripts/ # Helper scripts & utilities
-├── watcher/ # File watcher for real-time streaming mode
-├── nextflow.config # Runtime configuration
-├── main.nf # Core Nextflow workflow (DSL2)
-├── environment.yml # Conda environment definition
-└── README.md # Project documentation
+├── .github/workflows/     # CI automation (Nextflow validation + dry-run)
+├── data/                  # Example FASTQ input data
+├── results/               # Pipeline output
+├── scripts/               # Helper scripts & utilities
+├── watcher/               # File watcher for real-time streaming mode
+├── nextflow.config        # Runtime configuration
+├── main.nf                # Core Nextflow workflow (DSL2)
+├── environment.yml        # Conda environment definition
+└── README.md              # Project documentation
 ```
+
 ---
 
 ## ⚙️ Installation
 
 ### 1️⃣ Clone the repository
+
 ```bash
 git clone https://github.com/mtariqi/rna-seq-realtime-pipeline.git
 cd rna-seq-realtime-pipeline
+```
 
 ### 2️⃣ Create Conda environment
+
+```bash
 conda env create -f environment.yml
 conda activate rna_realtime_env
+```
 
 ### 3️⃣ Run a quick test (dry-run)
 
+```bash
 nextflow run main.nf -stub-run
+```
 
 ### 4️⃣ Enable real-time watcher
-bash watcher/watch_and_process.sh
 
+```bash
+bash watcher/watch_and_process.sh
+```
 
 This continuously monitors your FASTQ directory and launches analysis as new data arrive.
 
-🧪 Continuous Integration (CI)
+---
+
+## 🧪 Continuous Integration (CI)
 
 The repository includes an automated workflow using GitHub Actions to:
 
-Build and validate the rna_realtime_env Conda environment
+- Build and validate the `rna_realtime_env` Conda environment
+- Install and verify Nextflow, FastQC, MultiQC, and Minimap2
+- Perform a Nextflow dry-run simulation (`-stub-run`)
+- Upload diagnostic logs as CI artifacts
 
-Install and verify Nextflow, FastQC, MultiQC, and Minimap2
+You can view the live CI status under the **Actions** tab or by checking the badge above.
 
-Perform a Nextflow dry-run simulation (-stub-run)
+---
 
-Upload diagnostic logs as CI artifacts
+## 📈 Example Output
 
-You can view the live CI status under the Actions tab
-or by following this badge:
-👉
+| Module | Output | Description |
+|--------|--------|-------------|
+| FastQC | `results/fastqc/` | Quality metrics per read |
+| Minimap2 | `results/alignment/` | Spliced alignments (BAM/SAM) |
+| FeatureCounts | `results/counts.txt` | Gene-level counts |
+| JAFFAL | `results/fusions/` | Fusion gene candidates |
+| MultiQC | `results/multiqc_report.html` | Aggregated QC report |
 
-📈 Example Output
-Module	Output	Description
-FastQC	results/fastqc/	Quality metrics per read
-Minimap2	results/alignment/	Spliced alignments (BAM/SAM)
-FeatureCounts	results/counts.txt	Gene-level counts
-JAFFAL	results/fusions/	Fusion gene candidates
-MultiQC	results/multiqc_report.html	Aggregated QC report
-🧮 Reproducibility
+---
 
-Workflow Language: Nextflow DSL2
+## 🧮 Reproducibility
 
-Environment Manager: Conda
-
-Container Support: Docker / Singularity (optional)
-
-Validation: Continuous Integration via GitHub Actions
+- **Workflow Language:** Nextflow DSL2
+- **Environment Manager:** Conda
+- **Container Support:** Docker / Singularity (optional)
+- **Validation:** Continuous Integration via GitHub Actions
 
 For full reproducibility, freeze all package versions before deployment:
 
+```bash
 conda env export > environment.lock.yml
+```
 
-🧠 Citation & References
---------------------------------------------------------------------------------
-Islam, M. T. (2025). *Real-time RNA-seq Pipeline (v1.0.0)* [Software]. Zenodo.  
-https://doi.org/10.5281/zenodo.17603512
+---
 
-Li H. (2018). Minimap2: pairwise alignment for nucleotide sequences. Bioinformatics, 34(18): 3094–3100.
+## 📚 Citation
 
-Davidson N. et al. (2022). JAFFAL: Fusion gene detection from long-read transcriptome data. Bioinformatics, 38(6): 1577–1583.
+If you use this pipeline in your research, please cite:
 
-Oxford Nanopore Technologies (2024). Dorado Basecaller.
+### APA Format
 
-Subread Team (2014). featureCounts: efficient read summarization program.
+> Islam, M. T. (2025). *Real-time RNA-seq Pipeline (v1.0.0)* [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.17603512
 
-🤝 Contributing
+### BibTeX
 
-Contributions and pull requests are welcome!
-Please fork the repo, create a feature branch, and submit a pull request.
+```bibtex
+@software{islam_2025_rnaseq,
+  author       = {Islam, MD Tariqul},
+  title        = {Real-time RNA-seq Pipeline},
+  version      = {1.0.0},
+  year         = {2025},
+  month        = {11},
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.17603512},
+  url          = {https://doi.org/10.5281/zenodo.17603512}
+}
+```
 
+---
+
+## 🧠 References
+
+- Islam, M. T. (2025). *Real-time RNA-seq Pipeline (v1.0.0)* [Software]. Zenodo. https://doi.org/10.5281/zenodo.17603512
+- Li H. (2018). Minimap2: pairwise alignment for nucleotide sequences. *Bioinformatics*, 34(18): 3094–3100.
+- Davidson N. et al. (2022). JAFFAL: Fusion gene detection from long-read transcriptome data. *Bioinformatics*, 38(6): 1577–1583.
+- Oxford Nanopore Technologies (2024). Dorado Basecaller.
+- Subread Team (2014). featureCounts: efficient read summarization program.
+
+---
+
+## 🤝 Contributing
+
+Contributions and pull requests are welcome! Please fork the repo, create a feature branch, and submit a pull request.
+
+```bash
 git checkout -b feature/new-module
 git commit -m "Add new module"
 git push origin feature/new-module
-
-🧾 How to Cite This Repository
-
-If you use this pipeline in your research, please cite it as follows:
-
-APA (Recommended):
-
-Islam, M. T. (2025). Real-time RNA-seq Pipeline: A Nextflow DSL2 framework for live transcriptomic analysis using Dorado, Minimap2, FeatureCounts, and JAFFAL. Zenodo. https://doi.org/10.5281/zenodo.xxxxxxx
-
-BibTeX:
 ```
-@software{islam_rnaseq_realtime_2025,
-  author       = {Islam, MD Tariqul},
-  title        = {Real-time RNA-seq Pipeline: A Nextflow DSL2 framework for live transcriptomic analysis using Dorado, Minimap2, FeatureCounts, and JAFFAL},
-  year         = {2025},
-  publisher    = {Zenodo},
-  version      = {1.0},
-  doi          = {10.5281/zenodo.xxxxxxx},
-  url          = {https://doi.org/10.5281/zenodo.xxxxxxx}
-}
-```
----------------------------------------------------------------------
-```
-📧 Contact
+
+---
+
+## 📧 Contact
 
 For technical inquiries or collaborations:
-📩 tariqul@scired.com
 
-🌐 LinkedIn: www.linkedin.com/in/mdtariqulscired
+- 📩 Email: tariqul@scired.com
+- 🌐 LinkedIn: [www.linkedin.com/in/mdtariqulscired](https://www.linkedin.com/in/mdtariqulscired)
+- 💻 GitHub: [https://github.com/mtariqi](https://github.com/mtariqi)
 
-💻 GitHub: https://github.com/mtariqi
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17603512.svg)](https://doi.org/10.5281/zenodo.17603512)
-📧 Contact
+---
 
-🧾 License
+## 🧾 License
 
-This project is released under the MIT License
-.
+This project is released under the [MIT License](LICENSE).
 
-“Real-time RNA-seq analysis is not just computation — it’s precision medicine in motion.”
-— MD Tariqul Islam (Tariq)
+---
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+> *"Real-time RNA-seq analysis is not just computation — it's precision medicine in motion."*  
+> — MD Tariqul Islam (Tariq)
