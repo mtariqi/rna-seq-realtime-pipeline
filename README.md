@@ -9,7 +9,7 @@ flowchart TB
     end
 
     subgraph WATCHER[👀 Real-time Monitoring Layer]
-        B1[File Watcher\n(inotify / fswatch / cron)]
+        B1["File Watcher\n(inotify / fswatch / cron)"]
     end
 
     subgraph ORCH[⚡ Nextflow Orchestration Layer]
@@ -26,8 +26,8 @@ flowchart TB
     end
 
     subgraph OUTPUT[📤 Output Layer]
-        E1[(Gene Counts)]
-        E2[(Fusion Events)]
+        E1["(Gene Counts)"]
+        E2["(Fusion Events)"]
     end
 
     subgraph CLOUD[☁️ Cloud/HPC Execution]
