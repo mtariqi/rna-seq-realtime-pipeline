@@ -24,10 +24,6 @@ flowchart LR
 <!-- ========================== -->
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/mtariqi/rna-seq-realtime-pipeline/main/assets/banner_rnaseq.png" width="80%" />
-</p>
-
-<p align="center">
   <a href="https://github.com/mtariqi/rna-seq-realtime-pipeline/actions/workflows/test.yml">
     <img src="https://github.com/mtariqi/rna-seq-realtime-pipeline/actions/workflows/test.yml/badge.svg" alt="RNA-seq Pipeline CI" />
   </a>
