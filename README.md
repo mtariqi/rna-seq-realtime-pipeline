@@ -1,22 +1,55 @@
-```mermaid
-flowchart LR
-    A[📥 Sequencer Output<br>FASTQ] --> B[👀 Watcher Script]
-    B -->|New files| C[⚡ Launch Nextflow]
+```
+flowchart TB
 
-    subgraph Pipeline[Nextflow DSL2 Pipeline]
+    subgraph INPUT[📥 Sequencing Input Layer]
+        A1[FASTQ (Nanopore/Illumina)]
+        A2[Live Streaming Data]
+    end
+
+    subgraph WATCHER[👀 Real-time Monitoring Layer]
+        B1[File Watcher\n(inotify / fswatch / cron)]
+    end
+
+    subgraph ORCH[⚡ Nextflow Orchestration Layer]
+        C1[Channel Creation]
+        C2[Process Triggers]
+        C3[Parallel Execution Engine]
+    end
+
+    subgraph MODULES[🔬 Analysis Modules]
         D1[🧬 Dorado Basecalling]
         D2[🛰 Minimap2 Alignment]
-        D3[🔢 FeatureCounts]
+        D3[🔢 FeatureCounts Quantification]
         D4[🔥 JAFFAL Fusion Detection]
     end
 
-    C --> D1
-    C --> D2
-    C --> D3
-    C --> D4
+    subgraph OUTPUT[📤 Output Layer]
+        E1[(Gene Counts)]
+        E2[(Fusion Events)]
+    end
 
-    D3 --> E[(📊 Gene Counts)]
-    D4 --> F[(🧪 Fusion Events)]
+    subgraph CLOUD[☁️ Cloud/HPC Execution]
+        F1[AWS Batch]
+        F2[Google Cloud Batch]
+        F3[SLURM HPC]
+        F4[Docker/Singularity]
+    end
+
+    A1 --> B1
+    A2 --> B1
+
+    B1 --> C1
+    C1 --> C2 --> C3
+
+    C3 --> D1
+    C3 --> D2
+    C3 --> D3
+    C3 --> D4
+
+    D3 --> E1
+    D4 --> E2
+
+    ORCH -. runs on .-> CLOUD
 ```
 
 <!-- ========================== -->
