@@ -119,7 +119,7 @@ For full reproducibility, freeze all package versions before deployment:
 conda env export > environment.lock.yml
 
 🧠 Citation & References
-
+--------------------------------------------------------------------------------
 Islam, M. T. (2025). *Real-time RNA-seq Pipeline (v1.0.0)* [Software]. Zenodo.  
 https://doi.org/10.5281/zenodo.17603512
 
