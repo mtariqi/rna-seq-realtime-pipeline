@@ -1,33 +1,73 @@
-[![RNA-seq Pipeline CI](https://github.com/mtariqi/rna-seq-realtime-pipeline/actions/workflows/test.yml/badge.svg)](https://github.com/mtariqi/rna-seq-realtime-pipeline/actions/workflows/test.yml)
-![Conda](https://img.shields.io/badge/Conda-ready-blue)
-![Nextflow](https://img.shields.io/badge/Nextflow-DSL2-green)
-![License](https://img.shields.io/badge/License-MIT-yellow)
-![Version](https://img.shields.io/badge/version-1.0-brightgreen)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17603512.svg)](https://doi.org/10.5281/zenodo.17603512)
+<!-- ========================== -->
+<!--        BADGES HEADER       -->
+<!-- ========================== -->
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/mtariqi/rna-seq-realtime-pipeline/main/assets/banner_rnaseq.png" width="80%" />
+</p>
 
-
-
-
-# ⚡ Real-time RNA-seq Pipeline
-**Author:** MD Tariqul Islam (Tariq)  
-**GitHub:** [@mtariqi](https://github.com/mtariqi)  
-**LinkedIn:** [www.linkedin.com/in/mdtariqulscired](https://www.linkedin.com/in/mdtariqulscired) 
-**License:** MIT • **Version:** 1.0 • **Last Updated:** November 2025  
-
-
+<p align="center">
+  <a href="https://github.com/mtariqi/rna-seq-realtime-pipeline/actions/workflows/test.yml">
+    <img src="https://github.com/mtariqi/rna-seq-realtime-pipeline/actions/workflows/test.yml/badge.svg" alt="RNA-seq Pipeline CI" />
+  </a>
+  <img src="https://img.shields.io/badge/Conda-ready-blue" />
+  <img src="https://img.shields.io/badge/Nextflow-DSL2-green" />
+  <img src="https://img.shields.io/badge/License-MIT-yellow" />
+  <img src="https://img.shields.io/badge/Version-1.0.0-brightgreen" />
+  <a href="https://doi.org/10.5281/zenodo.17603512">
+    <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.17603512.svg" alt="DOI">
+  </a>
+</p>
 
 ---
 
-## 📘 Overview
-This repository implements a **modular, streaming-aware RNA-seq workflow** for *real-time Nanopore* or *Illumina* sequencing analysis.  
-The pipeline continuously monitors an input directory for new reads, performs **on-the-fly basecalling**, **alignment**, and **gene-level quantification**, and reports **fusion events** as data arrive.
+# ⚡ **Real-time RNA-seq Pipeline**
+A modular **Nextflow DSL2** workflow for *streaming-aware* RNA-seq processing using **Dorado, Minimap2, FeatureCounts, and JAFFAL fusion detection**.
 
-It is designed to operate both in:
-- 🧑‍🔬 **Interactive mode** (local/academic HPC)  
-- ☁️ **Cloud/HPC environments** (AWS Batch, SLURM, Google Cloud)  
+---
 
-Built entirely in **Nextflow DSL2** with Conda-based reproducibility, this pipeline supports **streaming bioinformatics** and **low-latency diagnostics** applications.
+## 👤 **Author**
+**MD Tariqul Islam (Tariq)**  
+**GitHub:** [@mtariqi](https://github.com/mtariqi)  
+**LinkedIn:** https://www.linkedin.com/in/mdtariqulscired  
+**License:** MIT  
+**Version:** 1.0  
+**Last Updated:** November 2025  
+
+---
+
+# 🔍 **Overview**
+This project provides a **real-time, event-driven RNA-seq pipeline** for cloud & HPC environments.  
+It automatically watches a directory for new FASTQ files and triggers downstream RNA-seq processing:
+
+- ⚙️ **Basecalling** – via ONT *Dorado*  
+- 🛰️ **Alignment** – *Minimap2*  
+- 🔢 **Quantification** – *FeatureCounts*  
+- 🔥 **Fusion detection** – *JAFFAL*  
+- 🧪 **Streaming mode** – continuous monitoring for new sequencing data  
+
+Ideal for **Nanopore live basecalling**, **Illumina streaming**, **clinical diagnostics**, and **real-time genomics**.
+
+---
+
+# 📚 **Citation**
+If you use this pipeline in your research, please cite:
+
+### **APA Format**
+> Islam, M. T. (2025). *Real-time RNA-seq Pipeline (v1.0.0)* [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.17603512
+
+### **BibTeX**
+```bibtex
+@software{islam_2025_rnaseq,
+  author       = {Islam, MD Tariqul},
+  title        = {Real-time RNA-seq Pipeline},
+  version      = {1.0.0},
+  year         = {2025},
+  month        = {11},
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.17603512},
+  url          = {https://doi.org/10.5281/zenodo.17603512}
+}
 
 ---
 
