@@ -3,6 +3,7 @@
 ![Nextflow](https://img.shields.io/badge/Nextflow-DSL2-green)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 ![Version](https://img.shields.io/badge/version-1.0-brightgreen)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.xxxxxxx.svg)](https://doi.org/10.5281/zenodo.xxxxxxx)
 
 
 
@@ -11,6 +12,8 @@
 **GitHub:** [@mtariqi](https://github.com/mtariqi)  
 **LinkedIn:** [www.linkedin.com/in/mdtariqulscired](https://www.linkedin.com/in/mdtariqulscired) 
 **License:** MIT • **Version:** 1.0 • **Last Updated:** November 2025  
+
+
 
 ---
 
@@ -135,7 +138,28 @@ git checkout -b feature/new-module
 git commit -m "Add new module"
 git push origin feature/new-module
 
+🧾 How to Cite This Repository
 
+If you use this pipeline in your research, please cite it as follows:
+
+APA (Recommended):
+
+Islam, M. T. (2025). Real-time RNA-seq Pipeline: A Nextflow DSL2 framework for live transcriptomic analysis using Dorado, Minimap2, FeatureCounts, and JAFFAL. Zenodo. https://doi.org/10.5281/zenodo.xxxxxxx
+
+BibTeX:
+```
+@software{islam_rnaseq_realtime_2025,
+  author       = {Islam, MD Tariqul},
+  title        = {Real-time RNA-seq Pipeline: A Nextflow DSL2 framework for live transcriptomic analysis using Dorado, Minimap2, FeatureCounts, and JAFFAL},
+  year         = {2025},
+  publisher    = {Zenodo},
+  version      = {1.0},
+  doi          = {10.5281/zenodo.xxxxxxx},
+  url          = {https://doi.org/10.5281/zenodo.xxxxxxx}
+}
+```
+---------------------------------------------------------------------
+```
 📧 Contact
 
 For technical inquiries or collaborations:
