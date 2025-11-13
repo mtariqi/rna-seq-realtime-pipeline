@@ -1,47 +1,49 @@
 # ⚡ Real-time RNA-seq Pipeline
 
 ```mermaid
+%%{init: {'theme':'dark', 'themeVariables': { 'primaryColor':'#1e3a8a','primaryTextColor':'#fff','primaryBorderColor':'#3b82f6','lineColor':'#60a5fa','secondaryColor':'#7c3aed','tertiaryColor':'#059669','noteBkgColor':'#1f2937','noteTextColor':'#fff'}}}%%
 flowchart TB
 
     subgraph INPUT[📥 Sequencing Input Layer]
-        A1["FASTQ (Nanopore/Illumina)"]
-        A2[Live Streaming Data]
+        A1["FASTQ (Nanopore/Illumina)"]:::inputNode
+        A2[Live Streaming Data]:::inputNode
     end
 
     subgraph WATCHER[👀 Real-time Monitoring Layer]
-        B1["File Watcher\n(inotify / fswatch / cron)"]
+        B1["File Watcher\n(inotify / fswatch / cron)"]:::watchNode
     end
 
     subgraph ORCH[⚡ Nextflow Orchestration Layer]
-        C1[Channel Creation]
-        C2[Process Triggers]
-        C3[Parallel Execution Engine]
+        C1[Channel Creation]:::orchNode
+        C2[Process Triggers]:::orchNode
+        C3[Parallel Execution Engine]:::orchNode
     end
 
     subgraph MODULES[🔬 Analysis Modules]
-        D1[🧬 Dorado Basecalling]
-        D2[🛰 Minimap2 Alignment]
-        D3[🔢 FeatureCounts Quantification]
-        D4[🔥 JAFFAL Fusion Detection]
+        D1[🧬 Dorado Basecalling]:::moduleNode
+        D2[🛰 Minimap2 Alignment]:::moduleNode
+        D3[🔢 FeatureCounts Quantification]:::moduleNode
+        D4[🔥 JAFFAL Fusion Detection]:::moduleNode
     end
 
     subgraph OUTPUT[📤 Output Layer]
-        E1["(Gene Counts)"]
-        E2["(Fusion Events)"]
+        E1["(Gene Counts)"]:::outputNode
+        E2["(Fusion Events)"]:::outputNode
     end
 
     subgraph CLOUD[☁️ Cloud/HPC Execution]
-        F1[AWS Batch]
-        F2[Google Cloud Batch]
-        F3[SLURM HPC]
-        F4[Docker/Singularity]
+        F1[AWS Batch]:::cloudNode
+        F2[Google Cloud Batch]:::cloudNode
+        F3[SLURM HPC]:::cloudNode
+        F4[Docker/Singularity]:::cloudNode
     end
 
     A1 --> B1
     A2 --> B1
 
     B1 --> C1
-    C1 --> C2 --> C3
+    C1 --> C2
+    C2 --> C3
 
     C3 --> D1
     C3 --> D2
@@ -52,6 +54,20 @@ flowchart TB
     D4 --> E2
 
     ORCH -. runs on .-> CLOUD
+
+    classDef inputNode fill:#3b82f6,stroke:#1e40af,stroke-width:3px,color:#fff
+    classDef watchNode fill:#8b5cf6,stroke:#6d28d9,stroke-width:3px,color:#fff
+    classDef orchNode fill:#f59e0b,stroke:#d97706,stroke-width:3px,color:#000
+    classDef moduleNode fill:#10b981,stroke:#059669,stroke-width:3px,color:#fff
+    classDef outputNode fill:#ec4899,stroke:#db2777,stroke-width:3px,color:#fff
+    classDef cloudNode fill:#06b6d4,stroke:#0891b2,stroke-width:3px,color:#fff
+    
+    style INPUT fill:#1e3a8a,stroke:#3b82f6,stroke-width:2px,color:#fff
+    style WATCHER fill:#581c87,stroke:#7c3aed,stroke-width:2px,color:#fff
+    style ORCH fill:#92400e,stroke:#f59e0b,stroke-width:2px,color:#fff
+    style MODULES fill:#065f46,stroke:#10b981,stroke-width:2px,color:#fff
+    style OUTPUT fill:#9f1239,stroke:#ec4899,stroke-width:2px,color:#fff
+    style CLOUD fill:#155e75,stroke:#06b6d4,stroke-width:2px,color:#fff
 ```
 
 <p align="center">
