@@ -3,7 +3,8 @@
 ![Nextflow](https://img.shields.io/badge/Nextflow-DSL2-green)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 ![Version](https://img.shields.io/badge/version-1.0-brightgreen)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.xxxxxxx.svg)](https://doi.org/10.5281/zenodo.xxxxxxx)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17603512.svg)](https://doi.org/10.5281/zenodo.17603512)
+
 
 
 
