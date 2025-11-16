@@ -57,7 +57,7 @@ flowchart TB
 
     classDef inputNode fill:#3b82f6,stroke:#1e40af,stroke-width:3px,color:#fff
     classDef watchNode fill:#8b5cf6,stroke:#6d28d9,stroke-width:3px,color:#fff
-    classDef orchNode fill:#f59e0b,stroke:#d97706,stroke-width:3px,color:#000
+    classDef orchNode fill:#f59e0b,stroke:#d97706,stroke-width:3px,color:#fff
     classDef moduleNode fill:#10b981,stroke:#059669,stroke-width:3px,color:#fff
     classDef outputNode fill:#ec4899,stroke:#db2777,stroke-width:3px,color:#fff
     classDef cloudNode fill:#06b6d4,stroke:#0891b2,stroke-width:3px,color:#fff
@@ -71,16 +71,66 @@ flowchart TB
 ```
 
 <p align="center">
+  <!-- CI/CD & Testing Badges -->
   <a href="https://github.com/mtariqi/rna-seq-realtime-pipeline/actions/workflows/test.yml">
     <img src="https://github.com/mtariqi/rna-seq-realtime-pipeline/actions/workflows/test.yml/badge.svg" alt="RNA-seq Pipeline CI" />
   </a>
-  <img src="https://img.shields.io/badge/Conda-ready-blue" />
-  <img src="https://img.shields.io/badge/Nextflow-DSL2-green" />
-  <img src="https://img.shields.io/badge/License-MIT-yellow" />
-  <img src="https://img.shields.io/badge/Version-1.0.0-brightgreen" />
+  <img src="https://img.shields.io/badge/Tests-Passing-success?style=flat-square" alt="Tests">
+  <img src="https://img.shields.io/badge/Build-Stable-brightgreen?style=flat-square" alt="Build">
+</p>
+
+<p align="center">
+  <!-- Core Technology Badges - Large -->
+  <img src="https://img.shields.io/badge/Nextflow-DSL2-00D4AA?style=for-the-badge&logo=nextflow&logoColor=white" alt="Nextflow DSL2">
+  <img src="https://img.shields.io/badge/Conda-Environment-44A833?style=for-the-badge&logo=anaconda&logoColor=white" alt="Conda">
+  <img src="https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/Docker-Containerized-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
+  <img src="https://img.shields.io/badge/Singularity-Ready-1D3557?style=for-the-badge" alt="Singularity">
+</p>
+
+<p align="center">
+  <!-- Platform & Execution Badges -->
+  <img src="https://img.shields.io/badge/Platform-Linux%20%7C%20macOS-lightgrey?style=flat-square" alt="Platform">
+  <img src="https://img.shields.io/badge/AWS-Batch%20Ready-FF9900?style=flat-square&logo=amazonaws&logoColor=white" alt="AWS">
+  <img src="https://img.shields.io/badge/Google-Cloud%20Batch-4285F4?style=flat-square&logo=googlecloud&logoColor=white" alt="Google Cloud">
+  <img src="https://img.shields.io/badge/HPC-SLURM-orange?style=flat-square" alt="SLURM">
+  <img src="https://img.shields.io/badge/GPU-Accelerated-76B900?style=flat-square&logo=nvidia&logoColor=white" alt="GPU">
+</p>
+
+<p align="center">
+  <!-- Analysis Tools & Features -->
+  <img src="https://img.shields.io/badge/Basecalling-Dorado-blue?style=flat-square" alt="Dorado">
+  <img src="https://img.shields.io/badge/Alignment-Minimap2-green?style=flat-square" alt="Minimap2">
+  <img src="https://img.shields.io/badge/Quantification-FeatureCounts-purple?style=flat-square" alt="FeatureCounts">
+  <img src="https://img.shields.io/badge/Fusion-JAFFAL-red?style=flat-square" alt="JAFFAL">
+  <img src="https://img.shields.io/badge/QC-FastQC%20%7C%20MultiQC-yellow?style=flat-square" alt="QC Tools">
+</p>
+
+<p align="center">
+  <!-- Data & Processing Badges -->
+  <img src="https://img.shields.io/badge/Input-Nanopore%20%7C%20Illumina-informational?style=flat-square" alt="Sequencing">
+  <img src="https://img.shields.io/badge/Mode-Real--time%20Streaming-critical?style=flat-square" alt="Real-time">
+  <img src="https://img.shields.io/badge/Automation-Event--Driven-blueviolet?style=flat-square" alt="Event-driven">
+  <img src="https://img.shields.io/badge/Processing-Parallel-orange?style=flat-square" alt="Parallel">
+  <img src="https://img.shields.io/badge/Workflow-Modular-9cf?style=flat-square" alt="Modular">
+</p>
+
+<p align="center">
+  <!-- Version, License, DOI -->
+  <img src="https://img.shields.io/badge/Version-1.0.0-brightgreen?style=flat-square" alt="Version">
+  <img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square" alt="License">
   <a href="https://doi.org/10.5281/zenodo.17603512">
     <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.17603512.svg" alt="DOI">
   </a>
+  <img src="https://img.shields.io/badge/Status-Production%20Ready-success?style=flat-square" alt="Status">
+  <img src="https://img.shields.io/badge/Reproducibility-High-green?style=flat-square" alt="Reproducibility">
+</p>
+
+<p align="center">
+  <!-- Application Area Badges -->
+  <img src="https://img.shields.io/badge/Application-Clinical%20Diagnostics-E91E63?style=flat-square" alt="Clinical">
+  <img src="https://img.shields.io/badge/Application-Precision%20Medicine-9C27B0?style=flat-square" alt="Precision Medicine">
+  <img src="https://img.shields.io/badge/Application-Real--time%20Genomics-00BCD4?style=flat-square" alt="Genomics">
 </p>
 
 ---
