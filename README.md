@@ -299,7 +299,6 @@ If you use this pipeline in your research, please cite:
 - Davidson N. et al. (2022). JAFFAL: Fusion gene detection from long-read transcriptome data. *Bioinformatics*, 38(6): 1577–1583.
 - Oxford Nanopore Technologies (2024). Dorado Basecaller.
 - Subread Team (2014). featureCounts: efficient read summarization program.
-
 ---
 
 ## 🤝 Contributing
